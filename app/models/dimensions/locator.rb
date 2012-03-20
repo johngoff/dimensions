@@ -7,7 +7,7 @@ class Dimensions::Locator
 
   def self.open_calais_tag(categories, entities, name)
     tags = Array.new
-    tags.push(categories.name)
+    tags.push(categories.first.name)
     entities.each do |entity|
       unless entity.attributes["name"].length > 30
         tags.push(entity.attributes["name"])
