@@ -5,10 +5,14 @@ class Dimensions::Locator
     entity = Entity.new(:name => geography.name, :serialized_data => serialized_data, :type => "location")
   end
 
-  def self.open_calails_tag(categories)
-    tags = {
-      0 => categories
-    }
-    entity = Entity.new(:name => geography.name, :serialized_data => tags, :type => "tags")
+  def self.open_calais_tag(categories, entities, name)
+    tags = Array.new
+    tags.push(categories.name)
+    entities.each do |entity|
+      unless entity.attributes["name"].length > 30
+        tags.push(entity.attributes["name"])
+      end
+    end
+    entity = Entity.new(:name => name, :tags => tags, :type => "tags")
   end
 end
