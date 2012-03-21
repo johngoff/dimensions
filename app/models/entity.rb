@@ -5,4 +5,5 @@ class Entity < ActiveRecord::Base
 
   Entity.inheritance_column= "ruby_type"
   scope :locations, where(:type => "location")
+  scope :tag, where(:type => "tags")
 end
